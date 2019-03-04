@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { getMovies } from "../services/fakeData";
+import Like from "../common/Like"
 
 class Movies extends Component {
 
@@ -18,15 +19,18 @@ class Movies extends Component {
     )
   }
 
-  handleLike(movies){
-      
-      this.setState({
-        isLiked: !this.state.isLiked
-      })
+  handleLike = (movie) => {
+    this.setState( prevState => {
+        const movies = prevState.movies;
+        const index = movies.indexOf(movie);
+        movies[index].liked = !movies[index].liked;
+        return{ 
+          movies: movies
+        } 
+    })
   }
 
   render() {
-    const classes = "fa fa-heart fa-heart-o"
     return (
       <div>
         <table className="table">
@@ -40,18 +44,19 @@ class Movies extends Component {
             </tr>
           </thead>
           <tbody>
-            { this.state.movies.map ( movies => (
-                  <tr  key={movies._id} >
-                  <td>{movies.title}</td>
-                  <td>{movies.genre.name}</td>
-                  <td>{movies.numberInStock}</td>
-                  <td>{movies.dailyRentalRate}</td>
+            { this.state.movies.map ( (movie, index) => (
+                  <tr  key={movie._id} >
+                  <td>{movie.title}</td>
+                  <td>{movie.genre.name}</td>
+                  <td>{movie.numberInStock}</td>
+                  <td>{movie.dailyRentalRate}</td>
                   <td>
-                      <i onClick= {() =>this.handleLike(movies)  } 
-                      className={(this.state.isLiked) ? 'fa fa-heart' : 'fa fa-heart-o'  } ></i>
+                      <Like index={index}
+                       liked={movie.liked}
+                       onLikeClicked={ () => this.handleLike(movie) } /> 
                   </td>
                   <td>
-                  <button onClick={()=> this.handleDelete(movies) }
+                  <button onClick={ () => this.handleDelete(movie) }
                   className="btn btn-danger btn-sm">Delete</button>
                 </td>
                 </tr>

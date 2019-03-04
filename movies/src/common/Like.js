@@ -1,0 +1,17 @@
+import React from "react";
+
+const Like = props => {
+  let classes = "fa fa-heart-o";
+  classes = props.liked ? 'fa fa-heart' : 'fa fa-heart-o' ;
+  return (
+    <i
+      className = {classes}
+      style={{ cursor: "pointer" }}
+      onClick={
+      props.onLikeClicked
+      }
+    />
+  );
+};
+
+export default Like;
