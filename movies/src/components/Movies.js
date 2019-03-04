@@ -31,8 +31,12 @@ class Movies extends Component {
   }
 
   render() {
+      const { length } = this.state.movies;
+      if(this.state.movies.length === 0 ) return <p>There are no movies left.</p>
+
     return (
       <div>
+        <p> There are {length } movies in stock. </p>
         <table className="table">
           <thead>
             <tr>
