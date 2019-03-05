@@ -1,7 +1,8 @@
 import React from 'react'
 
 const Pagination = props => {
-    const { crtPage , maxItems , pageSize , onPageChange } = props;  
+    const { crtPage , maxItems , pageSize , onPageChange } = props;
+    const pages = [1,2]  
     return(
           <nav>
                 <ul className="pagination">

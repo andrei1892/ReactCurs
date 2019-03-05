@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { getMovies } from "../services/fakeData";
 import Like from "../common/Like"
+import Pagination from "../common/Pagination";
 
 class Movies extends Component {
 
@@ -35,6 +36,7 @@ class Movies extends Component {
       if(this.state.movies.length === 0 ) return <p>There are no movies left.</p>
 
     return (
+      <React.Fragment>
       <div>
         <p> There are {length } movies in stock. </p>
         <table className="table">
@@ -69,6 +71,8 @@ class Movies extends Component {
           </tbody>
         </table>
       </div>
+      <Pagination/>
+      </React.Fragment>
     );
   }
 }
