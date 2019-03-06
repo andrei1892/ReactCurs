@@ -1,16 +1,18 @@
 import React from 'react'
 
 const Pagination = props => {
-    const { crtPage , maxItems , pageSize , onPageChange } = props;
-    const pages = [1,2]  
+    const { crtPage , maxItemsOnPage , itemsCount , onPageChange } = props;
+    const numOfPages  = Math.ceil( itemsCount / maxItemsOnPage )
+    const pages = new Array(numOfPages).fill(null) 
+
     return(
           <nav>
                 <ul className="pagination">
-                    { pages.map(page => 
-                        <li key={page} 
+                    { pages.map( (page, index) => 
+                        <li key={index} 
                         className="page-item">
                         <a className="page-link"  
-                        onClick={ () => onPageChange }>{crtPage}</a>   
+                        onClick={ () => onPageChange(index+1) }>{index + 1}</a>   
                         </li>
                     )}
                 </ul>

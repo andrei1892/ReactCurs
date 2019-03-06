@@ -2,12 +2,15 @@ import React, { Component } from "react";
 import { getMovies } from "../services/fakeData";
 import Like from "../common/Like"
 import Pagination from "../common/Pagination";
+// import {paginate} from '../utils/paginate'
 
 class Movies extends Component {
 
   state = {
         movies: getMovies() ,
-        isLiked: false
+        isLiked: false ,
+        maxItemsOnPage: 4,
+        crtPage: 1
   }
 
   handleDelete(movie){
@@ -31,9 +34,25 @@ class Movies extends Component {
     })
   }
 
+  getMovies = (crtPage, maxItemsOnPage ) => {
+      let start = ( crtPage -1 ) * maxItemsOnPage ;
+      let end = start + maxItemsOnPage;
+    //  console.log(this.state.movies.slice(0,4))
+      return this.state.movies.slice(start,end)
+  }
+
+  onPageChange = (page) => {
+      this.setState({
+        crtPage: page
+      })
+  }
+
   render() {
       const { length } = this.state.movies;
       if(this.state.movies.length === 0 ) return <p>There are no movies left.</p>
+      console.log( this.getMovies(1 , 4)   ) ;
+    //  console.log( getMovies(this.state.crtPage , this.state.maxItemsOnPage)   ) ;
+   // const paginatedMovies = paginate(movies, crtPage);
 
     return (
       <React.Fragment>
@@ -50,7 +69,7 @@ class Movies extends Component {
             </tr>
           </thead>
           <tbody>
-            { this.state.movies.map ( (movie, index) => (
+            { this.getMovies(this.state.crtPage, this.state.maxItemsOnPage).map ( (movie, index) => (
                   <tr  key={movie._id} >
                   <td>{movie.title}</td>
                   <td>{movie.genre.name}</td>
@@ -71,7 +90,7 @@ class Movies extends Component {
           </tbody>
         </table>
       </div>
-      <Pagination/>
+      <Pagination crtPage={this.state.crtPage} maxItemsOnPage={this.state.maxItemsOnPage} onPageChange={this.onPageChange} itemsCount = {length} />
       </React.Fragment>
     );
   }
