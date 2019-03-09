@@ -50,9 +50,6 @@ class Movies extends Component {
   render() {
       const { length } = this.state.movies;
       if(this.state.movies.length === 0 ) return <p>There are no movies left.</p>
-      console.log( this.getMovies(1 , 4)   ) ;
-    //  console.log( getMovies(this.state.crtPage , this.state.maxItemsOnPage)   ) ;
-   // const paginatedMovies = paginate(movies, crtPage);
 
     return (
       <React.Fragment>
