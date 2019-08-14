@@ -1,0 +1,230 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  color: black;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.wrapper {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: 8% 92%;
+}
+
+.first-box {
+  border-bottom: 3px solid #d69764;
+  background-color: #5fc2e0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.first-box h1 {
+  width: 93%;
+  text-align: center;
+  display: inline-block;
+  vertical-align: center;
+  color: #b15a13;
+  font-style: italic;
+  text-shadow: #657374 2px 1px 1px;
+}
+
+.cart {
+  width: 7%;
+  height: 100%;
+  position: relative;
+}
+
+.cart img {
+  width: 50px;
+  height: 50px;
+}
+
+.product-counter {
+  position: absolute;
+  bottom: 15%;
+  right: 15%;
+  width: 20%;
+  padding: 2.5px;
+  border-radius: 50%;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+.second-box {
+  display: grid;
+  grid-template-columns: 15% 85%;
+}
+
+.toateCategoriile {
+  position: relative;
+  height: 100%;
+  min-width: 75px;
+  background-color: #5fc2e0; /* #D71440 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+}
+
+.toateCategoriile h4 {
+  text-shadow: #84b8e9 1px 1px;
+}
+
+.categorie {
+  position: relative;
+  min-width: 75px;
+  padding: 5px 0;
+  min-height: 50px;
+  height: 5%;
+  width: 95%;
+  border: 1px solid #d69764;
+  box-shadow: 5px 5px rgb(84, 112, 134);
+  text-align: center;
+}
+
+.categorie:hover {
+  cursor: pointer;
+  background-color: #f8cd40;
+}
+
+.subcategorie {
+  display: none;
+}
+
+.subcategorieAfisata {
+  position: absolute;
+  top: 7%;
+  left: 100%;
+  width: 100%;
+  min-height: 21%;
+  height: auto;
+  background-color: #5fc2e0;
+  border: 1px solid #d69764;
+  box-shadow: 5px 5px gray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.subcategorieAfisata a {
+  width: 100%;
+  height: 30px;
+  margin: 5px 0;
+  color: black;
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.subcategorieAfisata a:hover {
+  background-color: #f8cd40;
+  border: 1px solid #d69764;
+}
+
+.main-pannel {
+  z-index: 5;
+  overflow: auto;
+}
+
+.main-pannel h3 {
+  text-align: center;
+  margin: 0;
+  padding: 1em;
+}
+
+.produse {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.UnProdus {
+  width: 250px;
+  height: 370px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  margin: 2.5px;
+}
+
+.UnProdus p {
+  margin: 0;
+  padding: 2.5px;
+}
+
+.UnProdus img {
+  display: block;
+  max-width: 90%;
+  max-height: 100%;
+}
+
+.UnProdus button {
+  width: 30%;
+  border-radius: 15%;
+  cursor: pointer;
+}
+
+.UnProdus:hover {
+  background-color: #d69764;
+  color: #183850;
+  border: 0.5px solid black;
+}
+
+@media screen and (max-height: 800px) {
+  .subcategorieAfisata {
+    top: 9%;
+    min-height: 27%;
+  }
+}
+
+@media screen and (max-height: 710px) {
+  .wrapper {
+    grid-template-rows: 10% 90%;
+  }
+
+  .subcategorieAfisata {
+    top: 10%;
+    min-height: 35%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .second-box {
+    grid-template-columns: 25% 75%;
+  }
+  .subcategorieAfisata {
+    width: 150%;
+  }
+}
+
+@media screen and (max-width: 545px) {
+  .second-box {
+    grid-template-columns: 20% 80%;
+  }
+  .subcategorieAfisata {
+    width: 120%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .wrapper {
+    width: 80vw;
+    margin: 0 auto;
+  }
+}
